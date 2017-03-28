@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url(); ?>assets/js/plugins/rangeslider/rangeslider.css" rel="stylesheet">
 
     <link href="<?php echo base_url(); ?>assets/css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+
 	
 	<style>
 		.logo{
