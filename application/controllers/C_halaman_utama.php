@@ -20,6 +20,6 @@ class C_halaman_utama extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('pages/content_booking');
+		$this->load->view('halaman_utama');
 	}
 }
