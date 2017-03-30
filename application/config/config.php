@@ -35,7 +35,7 @@ $config['base_url'] = 'http://31.220.56.83/gofutsaldev/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

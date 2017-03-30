@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             	</div>
 
                 <div class="ibox-content" style="background: rgba(255, 253, 255, 0.9);">
-                    <form class="m-t" role="form" action="">
+                    <form class="m-t" role="form" action="<?php echo base_url(); ?>c_booking/search_lapangan">
                         <div class="form-group">
                         	<label for="email">Daerah</label>
                             <input type="text" name="txt_daerah" class="form-control" placeholder="masukan nama daerah" required="">
@@ -96,7 +96,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="form-group">
                         	<label for="email">Jam</label>
-                            <input type="text" name="txt_jam" class="form-control" placeholder="masukan jam booking" required="">
+                            <!-- <input type="text" name="txt_jam" class="form-control" placeholder="masukan jam booking" required=""> -->
+                            <select class="form-control m-b" name="account">
+                                <option value="">Pilih Jam</option>
+                                <option value="0800">08.00</option>
+                                <option value="0800">09.00</option>
+                                <option value="0800">10.00</option>
+                                <option value="0800">11.00</option>
+                                <option value="0800">12.00</option>
+                                <option value="0800">13.00</option>
+                                <option value="0800">14.00</option>
+                                <option value="0800">15.00</option>
+                                <option value="0800">16.00</option>
+                                <option value="0800">17.00</option>
+                                <option value="0800">18.00</option>
+                                <option value="0800">19.00</option>
+                                <option value="0800">20.00</option>
+                                <option value="0800">21.00</option>
+                                <option value="0800">22.00</option>
+                                <option value="0800">23.00</option>
+                                <option value="0800">00.00</option>
+                            </select>
                         </div>
                         <div class="form-group">
                         	<label for="email">Durasi</label>
