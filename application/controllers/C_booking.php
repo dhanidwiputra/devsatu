@@ -20,11 +20,18 @@ class C_booking extends CI_Controller {
 	 */
 	public function index()
 	{
-		
+
 	}
 
 	public function search_lapangan()
 	{
-		$this->load->view('layout/header_booking');
+		$daerah = $_POST['txt_daerah'];
+		$tanggal = $_POST['txt_tanggal'];
+		$jam = $_POST['txt_jam'];
+		$durasi = $_POST['txt_durasi'];
+		$this->load->model('M_booking');
+		$varcontent['hasil_lapangan'] = $this->M_booking->search_lapangan($daerah,$tanggal,$jam,$durasi);
+
+		$this->load->view('layout/header_booking',$varcontent);
 	}
 }

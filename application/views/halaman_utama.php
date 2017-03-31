@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <link href="<?php echo base_url(); ?>assets/css/animate.css" rel="stylesheet">
 
-	
+
 	<style>
 		.logo{
 			text-align: center;
@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             	</div>
 
                 <div class="ibox-content" style="background: rgba(255, 253, 255, 0.9);">
-                    <form class="m-t" role="form" action="<?php echo base_url(); ?>c_booking/search_lapangan">
+                    <form class="m-t" role="form" action="<?php echo base_url(); ?>c_booking/search_lapangan" method="POST">
                         <div class="form-group">
                         	<label for="email">Daerah</label>
                             <input type="text" name="txt_daerah" class="form-control" placeholder="masukan nama daerah" required="">
@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-group">
                         	<label for="email">Jam</label>
                             <!-- <input type="text" name="txt_jam" class="form-control" placeholder="masukan jam booking" required=""> -->
-                            <select class="form-control m-b" name="account">
+                            <select class="form-control m-b" name="txt_jam">
                                 <option value="">Pilih Jam</option>
                                 <option value="0800">08.00</option>
                                 <option value="0800">09.00</option>
@@ -123,11 +123,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div id="basic_slider"></div>
                             <br>
             				<div><span id="durasi_value"></span> Jam</div>
-            				<input type="hidden" id="nilai_durasi" name="value_durasi">
+            				<input type="hidden" id="nilai_durasi" name="txt_durasi">
                         </div>
                         <button type="submit" class="btn btn-primary block full-width m-b">Cari Lapangan</button>
                     </form>
-                   
+
                 </div>
             </div>
             <div class="col-md-6">
@@ -168,7 +168,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </div>
-	
+
 
 
 
@@ -273,4 +273,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </body>
 
 </html>
-
