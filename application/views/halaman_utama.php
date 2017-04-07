@@ -77,21 +77,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row">
 
             <div class="col-md-6">
-				<div class="logo">
+				<!-- <div class="logo">
             		<h2>gofutsal!</h2>
             		<p>booking</p>
-            	</div>
+            	</div> -->
 
                 <div class="ibox-content" style="background: rgba(255, 253, 255, 0.9);">
-                    <form class="m-t" role="form" action="<?php echo base_url(); ?>c_booking/search_lapangan" method="POST">
+                    <center><img src="<?php echo base_url()."assets/img/Design.png"; ?>" style="width: 150px;"></center>
+                    <center><div class="logo" style="color: #666;">Booking</div></center>
+                    <form class="m-t" role="form" action="<?php echo base_url(); ?>c_booking/search_lapangan" id="send_form" method="POST">
                         <div class="form-group">
                         	<label for="email">Daerah</label>
-                            <input type="text" name="txt_daerah" class="form-control" placeholder="masukan nama daerah" required="">
+                            <input type="text" name="txt_daerah" class="form-control" placeholder="masukan nama daerah" required>
                         </div>
                         <div class="form-group" id="data_1">
                         	<label class="font-normal">Tanggal</label>
                             <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" name="txt_tanggal" placeholder="pilih tanggal booking">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" name="txt_tanggal" placeholder="pilih tanggal booking" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -100,22 +102,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <select class="form-control m-b" name="txt_jam">
                                 <option value="">Pilih Jam</option>
                                 <option value="0800">08.00</option>
-                                <option value="0800">09.00</option>
-                                <option value="0800">10.00</option>
-                                <option value="0800">11.00</option>
-                                <option value="0800">12.00</option>
-                                <option value="0800">13.00</option>
-                                <option value="0800">14.00</option>
-                                <option value="0800">15.00</option>
-                                <option value="0800">16.00</option>
-                                <option value="0800">17.00</option>
-                                <option value="0800">18.00</option>
-                                <option value="0800">19.00</option>
-                                <option value="0800">20.00</option>
-                                <option value="0800">21.00</option>
-                                <option value="0800">22.00</option>
-                                <option value="0800">23.00</option>
-                                <option value="0800">00.00</option>
+                                <option value="0900">09.00</option>
+                                <option value="1000">10.00</option>
+                                <option value="1100">11.00</option>
+                                <option value="1200">12.00</option>
+                                <option value="1300">13.00</option>
+                                <option value="1400">14.00</option>
+                                <option value="1500">15.00</option>
+                                <option value="1600">16.00</option>
+                                <option value="1700">17.00</option>
+                                <option value="1800">18.00</option>
+                                <option value="1900">19.00</option>
+                                <option value="2000">20.00</option>
+                                <option value="2100">21.00</option>
+                                <option value="2200">22.00</option>
+                                <option value="2300">23.00</option>
+                                <option value="0000">00.00</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -123,7 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div id="basic_slider"></div>
                             <br>
             				<div><span id="durasi_value"></span> Jam</div>
-            				<input type="hidden" id="nilai_durasi" name="txt_durasi">
+            				<input type="hidden" id="nilai_durasi" name="txt_durasi" required>
                         </div>
                         <button type="submit" class="btn btn-primary block full-width m-b">Cari Lapangan</button>
                     </form>
@@ -131,12 +133,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="col-md-6">
-				<div class="logo">
+				<!-- <div class="logo">
             		<h2>gofutsal!</h2>
             		<p>social</p>
-            	</div>
+            	</div> -->
 
-                <div class="ibox-content" style="background: rgba(255, 253, 255, 0.9);>
+                <div class="ibox-content" style="background: rgba(255, 253, 255, 0.9);">
+                    <center><img src="<?php echo base_url()."assets/img/Design.png"; ?>" style="width: 150px;"></center>
+                    <center><div class="logo" style="color: #666;">Social</div></center>
+                    <br>
+                    <div class="spacer" style="height: 5px;"></div>
                     <form class="m-t" role="form" action="">
                         <div class="form-group">
                             <input type="email" class="form-control" placeholder="Username" required="">
@@ -243,6 +249,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script>
     	$('#data_1 .input-group.date').datepicker({
                 todayBtn: "linked",
+                format: 'yyyy-mm-dd',
                 keyboardNavigation: false,
                 forceParse: false,
                 calendarWeeks: true,
@@ -268,6 +275,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			bigValueSpan.innerHTML = values[handle];
 			nilai_durasi.value = values[handle];
 		});
+
+        // $('#send_form').submit(function() {
+        //     jam = $( "input[name*='txt_jam']" ).val();
+
+        //     return false; 
+        // });
 
     </script>
 </body>
