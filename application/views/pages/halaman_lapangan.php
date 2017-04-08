@@ -27,9 +27,18 @@
                 $rating = $value['rating'];
                 $deskripsi = $value['deskripsi'];
                 $daerah = $value['daerah'];
+                $lat = $value['lat'];
+                $long = $value['long'];
 
             }
     ?>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9H1cu59k8p6nujTZTl3ZI4fy3No0TSIc&sensor=false" type="text/javascript"></script>
+    
+    <!-- lat long -->
+    
+    <input type="hidden" id="txt_lat" value="<?php echo $lat; ?>">
+    <input type="hidden" id="txt_long" value="<?php echo $long; ?>">
+    <input type="hidden" id="txt_nama" value="<?php echo $nama; ?>">
 
     <div class="container-fluid" style="width: 80%;">
 
@@ -80,14 +89,19 @@
 
 
                                 </div>
+                                <div id="map" class="col-lg-12" style="height: 300px;"></div>
                             </div>
-
+                            
                         </div>
+                         
+
+                        
+                       
                     </div>
 
                 </div>
         </div>
-
+       
     <script type="text/javascript">
         $.fn.stars = function() {
             return this.each(function(i,e){$(e).html($('<span/>').width($(e).text()*16));});
@@ -173,7 +187,29 @@
             $('.stars').stars();
         }
 
+        //map location
 
+        lat = $('#txt_lat').val();
+        long = $('#txt_long').val();
+        nama = $('#txt_nama').val();
+
+        var myOptions = {
+              zoom: 18,
+                scaleControl: true,
+              center:  new google.maps.LatLng(lat,long),
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+         
+            var map = new google.maps.Map(document.getElementById("map"),
+                myOptions);
+
+         var marker1 = new google.maps.Marker({
+         position : new google.maps.LatLng(lat,long),
+         title : nama,
+         map : map,
+         draggable : true
+         });
 
     </script>
 
