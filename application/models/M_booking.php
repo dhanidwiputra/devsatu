@@ -19,7 +19,7 @@ class M_booking extends CI_Model {
 
 	public function search_lapangan($daerah,$tanggal,$jam,$durasi,$where='',$order='',$direction='',$start_limit='',$end_limit='')
 	{
-    		$sql = "SELECT a.nama,a.daerah,a.picture,b.id_tipe,
+    		$sql = "SELECT a.id,a.nama,a.daerah,a.picture,b.id_tipe,
                 (SELECT (SELECT SUM(rating_sum) FROM rating_lapangan WHERE id_lapangan = a.id)
                 /(SELECT COUNT(*) FROM rating_lapangan WHERE id_lapangan = a.id)) AS rating,
                 (SELECT tarif FROM tipe_lapangan WHERE id_lapangan = a.id ORDER BY tarif ASC LIMIT 1) AS harga_mulai
@@ -39,5 +39,14 @@ class M_booking extends CI_Model {
         $queryRec = $this->db->query($sql,array($tanggal,$jam,$daerah,$daerah));
         return $queryRec;
 	}
+
+    public function search_lapangan_individu($id_lapangan)
+    {
+        $sql = "SELECT a.*,(SELECT (SELECT SUM(rating_sum) FROM rating_lapangan WHERE id_lapangan = a.id)
+                /(SELECT COUNT(*) FROM rating_lapangan WHERE id_lapangan = a.id)) AS rating 
+                FROM lapangan a where a.id = ?";
+        $queryRec = $this->db->query($sql,array($id_lapangan))->result_array();
+        return $queryRec;
+    }
     
 }

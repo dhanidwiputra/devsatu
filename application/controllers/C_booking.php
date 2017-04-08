@@ -29,7 +29,7 @@ class C_booking extends CI_Controller {
 		$varcontent['tanggal'] = $_POST['txt_tanggal'];
 		$varcontent['jam'] = $_POST['txt_jam'];
 		$varcontent['durasi'] = $_POST['txt_durasi'];
-		
+		$varcontent['content'] = "pages/content_booking";
 		$this->load->view('layout/header_booking',$varcontent);
 	}
 
@@ -103,6 +103,7 @@ class C_booking extends CI_Controller {
 					$data[$i]['id_tipe']['first']= $row['id_tipe'];
 					$data[$i]['rating']['first']= $row['rating'];
 					$data[$i]['harga_mulai']['first']= $row['harga_mulai'];
+					$data[$i]['id']['first']= $row['id'];
 					$i++;
 				}	
 
@@ -117,5 +118,17 @@ class C_booking extends CI_Controller {
 
 		
 		
+	}
+
+	function view_lapangan()
+	{
+		$id_lapangan = $this->uri->segment(3);
+
+		$this->load->model('M_booking');
+		$varcontent['data_lapangan'] = $this->M_booking->search_lapangan_individu($id_lapangan);
+
+		$varcontent['content'] = "pages/halaman_lapangan";
+		$varcontent['id_lapangan'] = $id_lapangan;
+		$this->load->view('layout/header_booking',$varcontent);
 	}
 }

@@ -15,6 +15,9 @@
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
 
+    <link href="<?php echo base_url(); ?>assets/css/plugins/slick/slick.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/plugins/slick/slick-theme.css" rel="stylesheet">
+
         <!-- Mainly scripts -->
     <script src="<?php echo base_url(); ?>assets/js/jquery-3.1.1.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
@@ -37,6 +40,9 @@
     <script src="<?php echo base_url(); ?>assets/js/demo/peity-demo.js"></script>
 
     <script src="<?php echo base_url(); ?>assets/js/plugins/dataTables/datatables.min.js"></script>
+        
+    <script src="<?php echo base_url(); ?>assets/js/plugins/slick/slick.min.js"></script>
+
 
     <script type="text/javascript">
             
@@ -82,10 +88,16 @@
         </nav>
 
         </div>
+
+
+        
         
         <div class="content">
-           <?php $this->load->view('pages/content_booking'); ?>            
+           <?php $this->load->view($content); ?>            
         </div>
+
+
+
 
         <div class="footer">
             <div>
