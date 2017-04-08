@@ -131,7 +131,7 @@
                             <div class="col-lg-2">
                                 <div class="row">
                                       <h3 style="color: #F77825;">
-                                          Rp. <?php echo $value['tarif']; ?>
+                                          Rp. <?php echo number_format($value['tarif']); ?>
                                       </h3>
                                       <div class="btn-group">
                                             <?php if ($value['status'] == 0){ ?>
