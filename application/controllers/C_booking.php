@@ -123,12 +123,16 @@ class C_booking extends CI_Controller {
 	function view_lapangan()
 	{
 		$id_lapangan = $this->uri->segment(3);
+		$jam = $this->uri->segment(4);
+		$tanggal = $this->uri->segment(5);
 
 		$this->load->model('M_booking');
 		$varcontent['data_lapangan'] = $this->M_booking->search_lapangan_individu($id_lapangan);
-
+		$varcontent['data_tipe_lapangan'] = $this->M_booking->search_tipe_lapangan($id_lapangan,$jam,$tanggal);
 		$varcontent['content'] = "pages/halaman_lapangan";
 		$varcontent['id_lapangan'] = $id_lapangan;
+		$varcontent['jam'] = $jam;
+		$varcontent['tanggal'] = $tanggal;
 		$this->load->view('layout/header_booking',$varcontent);
 	}
 }

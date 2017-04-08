@@ -60,14 +60,14 @@
     </script>
 </head>
 
-<body class="top-navigation">
+<body class="top-navigation" style="margin-top: 51px;">
 
     <div id="wrapper">
         <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom white-bg">
-        <nav class="navbar navbar-static-top" role="navigation">
+        <nav class="navbar navbar-fixed-top" role="navigation">
             <div class="navbar-header">
-                <a href="#" class="navbar-brand" style="background: #ffffff;">
+                <a href="<?php echo base_url(); ?>" class="navbar-brand" style="background: #ffffff;">
                     <img src="<?php echo base_url()."assets/img/Design.png"; ?>" style="width: 70px;margin-top: -8px;">
                 </a>
             </div>

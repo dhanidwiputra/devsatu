@@ -48,5 +48,17 @@ class M_booking extends CI_Model {
         $queryRec = $this->db->query($sql,array($id_lapangan))->result_array();
         return $queryRec;
     }
-    
+    public function search_tipe_lapangan($id_lapangan,$jam,$tanggal)
+    {
+        
+        $sql = "SELECT a.*,CASE WHEN b.id_lapangan IS NULL THEN 0 ELSE 1 END AS status 
+                FROM
+                    (SELECT * FROM tipe_lapangan a 
+                    WHERE id_lapangan = ?) a 
+                LEFT JOIN 
+                    (SELECT * FROM status_lapangan WHERE tanggal = ? AND jam = ?) b
+                ON a.id_tipe = b.id_tipe";
+        $queryRec = $this->db->query($sql,array($id_lapangan,$tanggal,$jam))->result_array();
+        return $queryRec;
+    }
 }

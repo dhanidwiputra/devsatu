@@ -55,7 +55,7 @@
                                     <div class="product-images">
 
                                         <div>
-                                            <div class="image-imitation" style="background: url(<?php echo "../../".$picture; ?>) no-repeat center;background-size: cover;">
+                                            <div class="image-imitation" style="background: url(<?php echo base_url().$picture; ?>) no-repeat center;background-size: cover;">
                                                 
                                             </div>
                                         </div>
@@ -81,8 +81,7 @@
 
                                     <div>
                                         <div class="btn-group">
-                                            <button class="btn btn-primary btn-lg">Lihat Lapangan</button>
-                                            
+                                            <a href="#tipe_lapangan"><button class="btn btn-primary btn-lg">Lihat Lapangan</button></a> 
                                         </div>
                                     </div>
 
@@ -100,6 +99,62 @@
                     </div>
 
                 </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-lg-12">
+                    <div class="widget style1 navy-bg">
+                        <div class="row vertical-align">
+                            <div class="col-lg-12 text-left">
+                                <h4 class="font-bold">Lapangan tersedia pada tanggal <?php echo $tanggal.' jam '.substr_replace($jam, ':', 2, 0).' wib'; ?></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group" id="tipe_lapangan">
+            <?php
+            $i = 0;
+            foreach ($data_tipe_lapangan as $key => $value) { $i++;?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h3 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $i; ?>"><h3><?php echo ucfirst($value['nama_tipe']); ?></h3></a>
+                                    <p><?php echo $value['deskripsi']; ?></p>
+                                </h3>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="row">
+                                      <h3 style="color: #F77825;">
+                                          Rp. <?php echo $value['tarif']; ?>
+                                      </h3>
+                                      <div class="btn-group">
+                                            <?php if ($value['status'] == 0){ ?>
+                                                <a href="#tipe_lapangan"><button class="btn btn-primary btn-md">Booking Lapangan</button></a> 
+                                            <?php }else{ ?>
+                                                <button class="btn btn-primary btn-md" disabled>Sudah Terbooking</button>
+                                            <?php } ?>
+                                        </div>                                  
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <h3 class="panel-title">
+                            
+                        </h3> -->
+                    </div>
+                    <div id="<?php echo $i; ?>" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+            </div>
         </div>
        
     <script type="text/javascript">
