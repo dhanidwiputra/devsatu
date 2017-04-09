@@ -61,4 +61,20 @@ class M_booking extends CI_Model {
         $queryRec = $this->db->query($sql,array($id_lapangan,$tanggal,$jam))->result_array();
         return $queryRec;
     }
+
+    public function booking_cart($id_tipe_lapangan)
+    {
+        $sql = "SELECT b.nama,b.daerah,b.id,a.* FROM tipe_lapangan a
+        LEFT JOIN lapangan b ON b.id = a.id_lapangan
+        WHERE id_tipe = ?";
+        $queryRec = $this->db->query($sql,array($id_tipe_lapangan))->result_array();
+        return $queryRec; 
+    }
+
+    public function insert_transaksi($id_user,$id_tipe,$tanggal,$jam,$total)
+    {
+        $sql = "insert into transaksi values (null,?,?,?,?,?)";
+        $queryRec = $this->db->query($sql,array($id_user,$id_tipe,$tanggal,$jam,$total));
+        return $queryRec; 
+    }
 }

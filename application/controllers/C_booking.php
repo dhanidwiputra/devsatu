@@ -135,4 +135,70 @@ class C_booking extends CI_Controller {
 		$varcontent['tanggal'] = $tanggal;
 		$this->load->view('layout/header_booking',$varcontent);
 	}
+
+	function booking_lapangan()
+	{
+		$id_tipe_lapangan = $this->uri->segment(3);
+		$jam = $this->uri->segment(4);
+		$tanggal = $this->uri->segment(5);
+		
+		$this->load->model('M_booking');
+		$varcontent['data_tipe_lapangan'] = $this->M_booking->booking_cart($id_tipe_lapangan);
+		$varcontent['content'] = "pages/detail_pemesanan";
+		//$varcontent['id_lapangan'] = $id_lapangan;
+		$varcontent['jam'] = $jam;
+		$varcontent['tanggal'] = $tanggal;
+		$this->load->view('layout/header_booking',$varcontent);
+
+		
+	}
+
+	function metode_pembayaran()
+	{	
+		
+		$newdata = array(
+        // 'username'  => '',
+        // 'email'     => '',
+        // 'logged_in' => TRUE
+			'id_tipe' => $_POST['txt_id_tipe'],
+			'tanggal' => $_POST['txt_tanggal'],
+			'jam' => $_POST['txt_jam'],
+			'total' => $_POST['txt_total']
+		);
+
+		$this->session->set_userdata($newdata);
+
+		$userid = $this->session->userdata('id_user');
+		if ($userid == '') 
+		{
+			$varcontent['method'] = 'login_before';
+			$varcontent['content'] = "pages/login_view";
+			$this->load->view('layout/header_booking',$varcontent);
+		}
+		else
+		{
+			echo $this->session->userdata('id_tipe');
+		}
+	}
+
+	function pembayaran($pembayaran)
+	{
+		$pilihan_pembayaran = $pembayaran;
+		
+		$id_user = $this->session->userdata('id_user');
+		$id_tipe = $this->session->userdata('id_tipe');
+		$tanggal = $this->session->userdata('tanggal');
+		$jam = $this->session->userdata('jam');
+		$total = $this->session->userdata('total');
+
+		
+		$this->load->model('M_booking');
+		$this->M_booking->insert_transaksi($id_user,$id_tipe,$tanggal,$jam,$total);
+		$varcontent['data_tipe_lapangan'] = $this->M_booking->booking_cart($id_tipe);
+		$varcontent['jam'] = $jam;
+		$varcontent['tanggal'] = $tanggal;
+		$varcontent['pembayaran'] = $pembayaran;
+		$varcontent['content'] = "pages/pembayaran";
+		$this->load->view('layout/header_booking',$varcontent);
+	}
 }

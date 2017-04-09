@@ -135,7 +135,7 @@
                                       </h3>
                                       <div class="btn-group">
                                             <?php if ($value['status'] == 0){ ?>
-                                                <a href="#tipe_lapangan"><button class="btn btn-primary btn-md">Booking Lapangan</button></a> 
+                                                <a href="<?php echo base_url().'c_booking/booking_lapangan/'.$value['id_tipe'].'/'.$jam.'/'.$tanggal; ?>"><button class="btn btn-primary btn-md">Booking Lapangan</button></a> 
                                             <?php }else{ ?>
                                                 <button class="btn btn-primary btn-md" disabled>Sudah Terbooking</button>
                                             <?php } ?>
