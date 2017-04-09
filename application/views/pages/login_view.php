@@ -1,7 +1,7 @@
 <div class="container-fluid" style="width: 80%;">
 		<div class="row">
                 <div class="col-lg-12">
-                    <div class="ibox">
+                    <div class="ibox animated fadeInLeftBig">
                         <div class="ibox-title">
                             <h5>Silahkan Login </h5>
                         </div>

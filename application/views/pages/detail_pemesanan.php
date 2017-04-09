@@ -2,7 +2,7 @@
 		<div class="row">
                 <div class="col-md-9">
 
-                    <div class="ibox">
+                    <div class="ibox animated fadeInLeftBig">
                         <div class="ibox-title">
                             <h5>Rincian pesanan</h5>
                         </div>

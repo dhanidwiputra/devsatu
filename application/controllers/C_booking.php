@@ -177,7 +177,8 @@ class C_booking extends CI_Controller {
 		}
 		else
 		{
-			echo $this->session->userdata('id_tipe');
+			$varcontent['content'] = "pages/metode_pembayaran";
+			$this->load->view('layout/header_booking',$varcontent);
 		}
 	}
 
@@ -191,7 +192,7 @@ class C_booking extends CI_Controller {
 		$jam = $this->session->userdata('jam');
 		$total = $this->session->userdata('total');
 
-		
+
 		$this->load->model('M_booking');
 		$this->M_booking->insert_transaksi($id_user,$id_tipe,$tanggal,$jam,$total);
 		$varcontent['data_tipe_lapangan'] = $this->M_booking->booking_cart($id_tipe);
