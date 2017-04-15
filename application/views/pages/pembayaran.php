@@ -4,11 +4,11 @@
 
                     <div class="ibox animated fadeInLeftBig">
                         <div class="ibox-title">
-                            <h5>Pembayaran Bank <?php echo $pembayaran; ?></h5><br>
+                            <h5>Pembayaran Dengan Saldo Gofutsal </h5><br>
                         </div>
                         <div class="ibox-content">
 
-						<form action="<?php echo base_url().'c_booking/metode_pembayaran'; ?>" method="POST">
+						<form action="<?php echo base_url().'c_booking/konfirmasi_pembayaran'; ?>" method="POST">
                             <div class="table-responsive">
                                 <table class="table shoping-cart-table">
                                     <tbody>
@@ -51,7 +51,7 @@
 		                                                </table>
 		                                            </dl>
 		                                            <br>
-		                                            <p><b>transfer ke bank bca d=dengan nomor rekening 1231231123 a/n goalfutsal sebanyak total pembayaran anda</b></p>
+		                                            <p><b>Dengan menekan tombol lanjutkan pembayaran maka saldo gofutsal anda akan di potong sebesar Rp. 50.000 untuk membooking lapangan ini, Pastikan anda mempunyai saldo yang mencukupi. </b></p>
 
 		                                        </td>
 		                                        <td>
@@ -70,7 +70,7 @@
                         
                         <div class="ibox-content">
 
-                            <button class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Laporkan Pembayaran</button>
+                            <button class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Lanjutkan Pembayaran</button>
                             <button class="btn btn-white"><i class="fa fa-arrow-left"></i> Kembali</button>
 
                         </div>

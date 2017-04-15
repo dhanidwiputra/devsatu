@@ -57,7 +57,21 @@ class C_login extends CI_Controller {
 
 			if ($method == 'login_before') 
 			{
-				$varcontent['content'] = "pages/metode_pembayaran";
+		
+				$id_user = $this->session->userdata('id_user');
+				$id_tipe = $this->session->userdata('id_tipe');
+				$tanggal = $this->session->userdata('tanggal');
+				$jam = $this->session->userdata('jam');
+				$total = $this->session->userdata('total');
+
+
+				// $this->load->model('M_booking');
+				// $this->M_booking->insert_transaksi($id_user,$id_tipe,$tanggal,$jam,$total);
+				$varcontent['data_tipe_lapangan'] = $this->M_booking->booking_cart($id_tipe);
+				$varcontent['jam'] = $jam;
+				$varcontent['tanggal'] = $tanggal;
+				
+				$varcontent['content'] = "pages/pembayaran";
 				$this->load->view('layout/header_booking',$varcontent);
 			}
 			else
@@ -73,5 +87,18 @@ class C_login extends CI_Controller {
 		}
 
 		
+	}
+	public function logout()
+	{
+		$arrays = array(
+		        'id_user'  => '',
+		        'username'     => '',
+		        'email' => '',
+		        'full_name' => '',
+		        'picture' => ''
+			);
+
+		$this->session->sess_destroy();
+		$this->load->view('halaman_utama');
 	}
 }

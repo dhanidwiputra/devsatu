@@ -177,14 +177,27 @@ class C_booking extends CI_Controller {
 		}
 		else
 		{
-			$varcontent['content'] = "pages/metode_pembayaran";
+			$id_user = $this->session->userdata('id_user');
+			$id_tipe = $this->session->userdata('id_tipe');
+			$tanggal = $this->session->userdata('tanggal');
+			$jam = $this->session->userdata('jam');
+			$total = $this->session->userdata('total');
+
+
+			$this->load->model('M_booking');
+			//$this->M_booking->insert_transaksi($id_user,$id_tipe,$tanggal,$jam,$total);
+			$varcontent['data_tipe_lapangan'] = $this->M_booking->booking_cart($id_tipe);
+			$varcontent['jam'] = $jam;
+			$varcontent['tanggal'] = $tanggal;
+			
+			$varcontent['content'] = "pages/pembayaran";
 			$this->load->view('layout/header_booking',$varcontent);
 		}
 	}
 
-	function pembayaran($pembayaran)
+	function pembayaran()
 	{
-		$pilihan_pembayaran = $pembayaran;
+		
 		
 		$id_user = $this->session->userdata('id_user');
 		$id_tipe = $this->session->userdata('id_tipe');
@@ -201,5 +214,43 @@ class C_booking extends CI_Controller {
 		$varcontent['pembayaran'] = $pembayaran;
 		$varcontent['content'] = "pages/pembayaran";
 		$this->load->view('layout/header_booking',$varcontent);
+	}
+
+	function konfirmasi_pembayaran()
+	{
+		$id_user = $this->session->userdata('id_user');
+		$id_tipe = $this->session->userdata('id_tipe');
+		$tanggal = $this->session->userdata('tanggal');
+		$jam = $this->session->userdata('jam');
+		$total = $this->session->userdata('total');
+
+		$this->load->model('M_booking');
+
+		$saldo = $this->M_booking->check_saldo($id_user);
+		if ($saldo == 0) {
+			echo "Anda Tidak Mempunyai Saldo yang Cukup";
+		}
+		else
+		{
+
+			$kode_booking = date("Y.m.d");
+			$kode_booking = $kode_booking.date("h:i:sa");
+			$kode_booking = $kode_booking.$id_user.$tanggal;
+			$kode_booking = md5($kode_booking);
+			$kode_booking = substr($kode_booking, 0,5);
+			
+			$this->M_booking->insert_transaksi($id_user,$id_tipe,$tanggal,$jam,$total,$kode_booking);
+			$varcontent['data_tipe_lapangan'] = $this->M_booking->booking_cart($id_tipe);
+			$this->M_booking->potong_saldo($id_user);
+			$varcontent['jam'] = $jam;
+			$varcontent['tanggal'] = $tanggal;
+
+			$varcontent['invoice_date'] = date("Y/m/d");
+			$varcontent['kode_booking'] = $kode_booking;
+			$varcontent['content'] = "pages/invoice";
+			$this->load->view('layout/header_booking',$varcontent);
+		}
+
+		
 	}
 }

@@ -71,10 +71,23 @@ class M_booking extends CI_Model {
         return $queryRec; 
     }
 
-    public function insert_transaksi($id_user,$id_tipe,$tanggal,$jam,$total)
+    public function insert_transaksi($id_user,$id_tipe,$tanggal,$jam,$total,$kode)
     {
-        $sql = "insert into transaksi values (null,?,?,?,?,?)";
-        $queryRec = $this->db->query($sql,array($id_user,$id_tipe,$tanggal,$jam,$total));
+        $sql = "insert into transaksi values (null,?,?,?,?,?,null,?)";
+        $queryRec = $this->db->query($sql,array($id_user,$id_tipe,$tanggal,$jam,$total,$kode));
+        return $queryRec; 
+    }
+
+    public function check_saldo($id_user)
+    {
+        $sql = "select coalesce(saldo,0) as saldo from user where id_user = ?";
+        $queryRec = $this->db->query($sql,array($id_user))->row_array();
+        return $queryRec['saldo']; 
+    }
+    public function potong_saldo($id_user)
+    {
+        $sql = "update user set saldo = 0 where id_user = ?";
+        $queryRec = $this->db->query($sql,array($id_user));
         return $queryRec; 
     }
 }

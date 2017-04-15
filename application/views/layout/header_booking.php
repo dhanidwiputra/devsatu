@@ -73,16 +73,26 @@
             </div>
             <div class="navbar-collapse collapse" id="navbar">
                 <ul class="nav navbar-top-links navbar-right">
-                    <li>
-                        <a href="login.html">
-                            <i class="fa fa-sign-in"></i> Masuk
-                        </a>
-                    </li>
-                    <li>
-                        <a href="login.html">
-                            <i class="fa fa-file-text-o"></i> Daftar
-                        </a>
-                    </li>
+                    <?php 
+                        if ($this->session->userdata('id_user') == '') {
+                     ?>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-sign-in"></i> Masuk
+                            </a>
+                        </li>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-file-text-o"></i> Daftar
+                            </a>
+                        </li>
+                    <?php }else{ ?>
+                        <li>
+                            <a href="<?php echo base_url().'c_login/logout'; ?>">
+                                <i class="fa fa-sign-out"></i> Log out
+                            </a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
         </nav>
